@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>test</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      !(function(e) {
+        var t = e.document,
+          n = t.documentElement,
+          i = 'orientationchange' in e ? 'orientationchange' : 'resize',
+          a = (function e() {
+            var t = n.getBoundingClientRect().width;
+            console.log(t);
+            return (n.style.fontSize = (t / 375) * 20 + 'px'), e;
+          })();
+        n.setAttribute(
+          'data-dpr',
+          e.navigator.appVersion.match(/iphone/gi) ? e.devicePixelRatio : 1
+        ),
+          /iP(hone|od|ad)/.test(e.navigator.userAgent) &&
+            (t.documentElement.classList.add('ios'),
+            parseInt(
+              e.navigator.appVersion.match(/OS (\d+)_(\d+)_?(\d+)?/)[1],
+              10
+            ) >= 8 && t.documentElement.classList.add('hairline')),
+          t.addEventListener &&
+            (e.addEventListener(i, a, !1),
+            t.addEventListener('DOMContentLoaded', a, !1));
+      })(window);
+    </script>
+    <script src="dist/build.js"></script>
+  </body>
+</html>
